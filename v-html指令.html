@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html指令</title>
+</head>
+<body>
+
+<div id="app">
+    <p v-text="content"></p>
+    <p v-html="content"></p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                content: '<a href="#">黑马程序员</a>'
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

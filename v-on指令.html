@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on指令</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="button" value="v-on:click" v-on:click="doIt">
+    <input type="button" value="@click" @click="doIt">
+    <input type="button" value="v-on:mouseenter" v-on:mouseenter="doIt">
+    <input type="button" value="@mouseenter" @mouseenter="doIt">
+    <input type="button" value="v-on:dblclick" v-on:dblclick="doIt">
+    <input type="button" value="@dblclick" @dblclick="doIt">
+
+    <h2 @click="changeFood">{{ food }}</h2>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                food: '辣椒炒干子'
+            }
+        },
+        methods: {
+            doIt: function () {
+                alert("doIt")
+            },
+            changeFood: function () {
+                this.food += '好好吃！'
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
