@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show指令</title>
+</head>
+<body>
+<!-- 根据表达值的真假，切换元素的显示和隐藏 -->
+<div id="app">
+    <div>
+        <img src="./img/dog.jpg" v-show="true" alt="">
+        <img src="./img/dog.jpg" v-show="isShow" alt="">
+        <img src="./img/dog.jpg" v-show="age>=18" alt="">
+    </div>
+    <div>
+        <button @click="trigger">显示/隐藏图片</button>
+        <button @click="grow">长大一岁</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                isShow: false,
+                age: 15
+            }
+        },
+        methods: {
+            trigger: function () {
+                this.isShow = !this.isShow;
+            },
+            grow: function () {
+                this.age++;
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

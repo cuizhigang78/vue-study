@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if指令</title>
+</head>
+<body>
+<!-- 根据表达值的真假，切换元素的显示和隐藏（操纵dom元素） -->
+<div id="app">
+    <div>
+        <p v-if="true">我是一个p</p>
+        <p v-if="isShow">我是一个p</p>
+        <p v-if="age>=18">我是一个p</p>
+    </div>
+    <div>
+        <button @click="trigger">显示/隐藏图片</button>
+        <button @click="grow">长大一岁</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                isShow: false,
+                age: 15
+            }
+        },
+        methods: {
+            trigger: function () {
+                this.isShow = !this.isShow;
+            },
+            grow: function () {
+                this.age++;
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

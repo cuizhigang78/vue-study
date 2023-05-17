@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计数器</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 计算器功能区域 -->
+    <div class="input-num">
+        <button @click="sub">
+            -
+        </button>
+        <span>{{num}}</span>
+        <button @click="add">
+            +
+        </button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                num: 0
+            }
+        },
+        methods: {
+            sub: function () {
+                this.num--;
+            },
+            add: function () {
+                this.num++;
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

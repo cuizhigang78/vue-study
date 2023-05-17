@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+</head>
+<body>
+<!-- 根据表达值的真假，切换元素的显示和隐藏 -->
+<div id="app">
+    <div id="mask">
+        <div class="center">
+            <h2 class="title">
+                <img :src="imgArr[index]" alt="">
+            </h2>
+            <!--图片-->
+            <img src="" alt="">
+            <!-- 左箭头 -->
+            <a href="javascript:void(0)" class="left" @click="prev" v-show="index>0">
+                《=
+            </a>
+            <!-- 右箭头 -->
+            <a href="javascript:void(0)" class="right" @click="next" v-show="index<imgArr.length-1">
+                =》
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                imgArr: [
+                    './img/img0.jpg',
+                    './img/img1.jpg',
+                    './img/img2.jpg'
+                ],
+                index: 0
+            }
+        },
+        methods: {
+            prev: function () {
+                this.index--;
+            },
+            next: function () {
+                this.index++;
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

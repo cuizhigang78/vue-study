@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind指令</title>
+    <style>
+        .active {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<!-- 设置元素的属性（比如：src,title,class） -->
+<div id="app">
+    <div>
+        <img v-bind:src="imgSrc" alt="">
+        <img :src="imgSrc" alt="">
+        <img :src="imgSrc" v-bind:title="imgTitle+'!!!'" alt="">
+        <img :src="imgSrc" :title="imgTitle+'!!!'" alt="">
+        <img :src="imgSrc" v-bind:class="isActive?'active':''" alt="" @click="trigger">
+        <img :src="imgSrc" v-bind:class="{active:isActive}" alt="" @click="trigger">
+        <img :src="imgSrc" :class="isActive?'active':''" alt="" @click="trigger">
+        <img :src="imgSrc" :class="{active:isActive}" alt="" @click="trigger">
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                imgSrc: './img/dog.jpg',
+                imgTitle: '黑马程序员',
+                isActive: false
+            }
+        },
+        methods: {
+            trigger: function () {
+                this.isActive = !this.isActive;
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
