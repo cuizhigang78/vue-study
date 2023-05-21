@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        li:hover button {
+            display: inline-block;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>小黑记事本</title>
+</head>
+<body>
+
+<section id="todoapp">
+    <!-- 输入框 -->
+    <header class="header">
+        <h1>小黑记事本</h1>
+        <label>
+            <input v-model="inputValue"
+                   @keyup.enter="add"
+                   autofocus="autofocus"
+                   autocomplete="off"
+                   placeholder="按回车键完成输入"
+                   class="new-todo">
+        </label>
+    </header>
+    <!-- 列表区域 -->
+    <section class="main">
+        <ul class="todo-list">
+            <li class="todo" v-for="(item, index) in list">
+                <div class="view">
+                    <span class="index">{{index + 1}}.</span>
+                    <label>{{item}}</label>
+                    <button hidden @click="remove(index)" class="destroy">×</button>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <!-- 统计和清空 -->
+    <footer class="info">
+        <div v-if="list.length!==0">
+            <span class="todo-count">
+            <strong>{{list.length}}</strong>
+            item left
+        </span>
+            <button @click="clear" class="clear-completed">Clear</button>
+        </div>
+    </footer>
+</section>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                list: ['吃饭', '睡觉', '编程'],
+                inputValue: '',
+                isDestroyShow: false
+            }
+        },
+        methods: {
+            add: function () {
+                this.list.push(this.inputValue);
+                this.inputValue = '';
+            },
+            remove: function (index) {
+                this.list.splice(index, 1);
+            },
+            clear: function () {
+                this.list = [];
+            }
+        }
+    }).mount('#todoapp')
+</script>
+</body>
+</html>

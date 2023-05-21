@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model指令</title>
+</head>
+<body>
+<!-- 获取和设置表单元素的值（双向数据绑定） -->
+<div id="app">
+    <input type="button" value="<" @click="sub">
+    <label>
+        <input type="text" v-model="count">
+    </label>
+    <input type="button" value=">" @click="add">
+
+    <h2>{{count}}</h2>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+                count: 0
+            }
+        },
+        methods: {
+            add: function () {
+                this.count++;
+            },
+            sub: function () {
+                this.count--;
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

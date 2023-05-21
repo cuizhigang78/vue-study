@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on指令</title>
+</head>
+<body>
+<!--
+ 1. 事件绑定的方法写成函数调用的形式，可以传入自定义参数
+ 2. 定义方法时需要定义形参来接收会传入的
+ 3. 事件的后面跟上 .修饰符 可以对事件进行限制，例如 keyUp.enter可以限制触发的按键为回车
+ -->
+<div id="app">
+    <input type="button" value="@click" @click="doIt('老铁', 666)">
+
+    <label>
+        <input type="text" @keyup.enter="sayHi" placeholder="">
+    </label>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const {createApp} = Vue
+
+    createApp({
+        data() {
+            return {
+            }
+        },
+        methods: {
+            doIt: function (p1, p2) {
+                console.log(p1);
+                console.log(p2);
+            },
+            sayHi: function () {
+                alert("hello");
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for指令</title>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="item in arr" :title="item">{{item}}</li>
+    </ul>
+    <ul>
+        <li v-for="(item, index) in arr" :title="item">{{index}} {{item}}</li>
+    </ul>
+    <ul>
+        <li v-for="(item, index) in objArr" :title="item">{{index}} {{item}}</li>
+    </ul>
+    <ul>
+        <li v-for="(item, index) in objArr" :title="item">{{index}} {{item.name}}</li>
+    </ul>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                arr: [1, 2, 3, 4, 5],
+                objArr: [
+                    {name: 'jack'},
+                    {name: 'rose'}
+                ]
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
